@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import Header from "@/components/Header";
@@ -26,7 +26,7 @@ interface Category {
   icon: string;
 }
 
-export default function CategoriesPage() {
+function CategoriesContent() {
   const searchParams = useSearchParams();
   const initialCat = searchParams.get("cat") || "";
 
@@ -100,11 +100,10 @@ export default function CategoriesPage() {
         <div className="flex gap-2 md:gap-3 overflow-x-auto hide-scrollbar pb-3 mb-4 md:flex-wrap">
           <button
             onClick={() => setSelectedCategory("")}
-            className={`flex-shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
-              !selectedCategory
+            className={`flex-shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${!selectedCategory
                 ? "bg-pink-500 text-white shadow-md"
                 : "bg-white text-gray-500 border border-gray-200 hover:border-pink-300"
-            }`}
+              }`}
           >
             الكل
           </button>
@@ -112,11 +111,10 @@ export default function CategoriesPage() {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.slug)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
-                selectedCategory === cat.slug
+              className={`flex-shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${selectedCategory === cat.slug
                   ? "bg-pink-500 text-white shadow-md"
                   : "bg-white text-gray-500 border border-gray-200 hover:border-pink-300"
-              }`}
+                }`}
             >
               {cat.icon} {cat.name}
             </button>
@@ -149,5 +147,28 @@ export default function CategoriesPage() {
 
       <BottomNav />
     </div>
+  );
+}
+
+export default function CategoriesPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#faf7f5] pb-20 md:pb-8">
+        <Header />
+        <main className="max-w-lg md:max-w-5xl lg:max-w-7xl mx-auto px-4 md:px-8 pt-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl h-64 animate-pulse"
+              />
+            ))}
+          </div>
+        </main>
+        <BottomNav />
+      </div>
+    }>
+      <CategoriesContent />
+    </Suspense>
   );
 }
