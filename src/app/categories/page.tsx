@@ -97,12 +97,12 @@ function CategoriesContent() {
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex gap-2 md:gap-3 overflow-x-auto hide-scrollbar pb-3 mb-4 md:flex-wrap">
+        <div className="flex gap-2 md:gap-3 overflow-x-auto hide-scrollbar pb-3 mb-4 md:flex-wrap -mx-4 px-4 md:mx-0 md:px-0">
           <button
             onClick={() => setSelectedCategory("")}
             className={`flex-shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${!selectedCategory
-                ? "bg-pink-500 text-white shadow-md"
-                : "bg-white text-gray-500 border border-gray-200 hover:border-pink-300"
+              ? "bg-pink-500 text-white shadow-md"
+              : "bg-white text-gray-500 border border-gray-200 hover:border-pink-300"
               }`}
           >
             الكل
@@ -112,8 +112,8 @@ function CategoriesContent() {
               key={cat.id}
               onClick={() => setSelectedCategory(cat.slug)}
               className={`flex-shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${selectedCategory === cat.slug
-                  ? "bg-pink-500 text-white shadow-md"
-                  : "bg-white text-gray-500 border border-gray-200 hover:border-pink-300"
+                ? "bg-pink-500 text-white shadow-md"
+                : "bg-white text-gray-500 border border-gray-200 hover:border-pink-300"
                 }`}
             >
               {cat.icon} {cat.name}

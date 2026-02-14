@@ -61,9 +61,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#faf7f5] pb-20 md:pb-8">
       <Header />
 
-      <main className="max-w-lg md:max-w-5xl lg:max-w-7xl mx-auto px-3 md:px-8">
+      <main className="max-w-lg md:max-w-5xl lg:max-w-7xl mx-auto px-4 md:px-8">
         {/* Search Bar */}
-        <div className="mt-3 mb-4 md:mt-4 md:mb-5 max-w-xl md:max-w-2xl mx-auto">
+        <div className="mt-4 mb-5 max-w-xl md:max-w-2xl mx-auto">
           <div className="bg-white rounded-full px-4 py-2.5 md:py-3 flex items-center gap-2 shadow-sm border border-gray-100">
             <span className="text-gray-400 text-lg">🔍</span>
             <input
@@ -149,7 +149,7 @@ export default function HomePage() {
                   عرض الكل ←
                 </Link>
               </div>
-              <div className="flex gap-3 md:gap-6 overflow-x-auto hide-scrollbar pb-2 md:justify-center md:flex-wrap -mx-3 px-3 md:mx-0 md:px-0">
+              <div className="flex gap-3 md:gap-6 overflow-x-auto hide-scrollbar pb-2 md:justify-center md:flex-wrap -mx-4 px-4 md:mx-0 md:px-0">
                 {categories.map((cat) => (
                   <Link
                     key={cat.id}
