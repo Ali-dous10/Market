@@ -50,33 +50,33 @@ export default function HomePage() {
 
   const filteredProducts = searchQuery.trim()
     ? products.filter(
-        (p) =>
-          p.name.includes(searchQuery) ||
-          p.category.includes(searchQuery) ||
-          (p.badge && p.badge.includes(searchQuery))
-      )
+      (p) =>
+        p.name.includes(searchQuery) ||
+        p.category.includes(searchQuery) ||
+        (p.badge && p.badge.includes(searchQuery))
+    )
     : products;
 
   return (
     <div className="min-h-screen bg-[#faf7f5] pb-20 md:pb-8">
       <Header />
 
-      <main className="max-w-lg md:max-w-5xl lg:max-w-7xl mx-auto px-4 md:px-8">
+      <main className="max-w-lg md:max-w-5xl lg:max-w-7xl mx-auto px-3 md:px-8">
         {/* Search Bar */}
-        <div className="mt-4 mb-5 max-w-xl md:max-w-2xl mx-auto">
-          <div className="bg-white rounded-full px-4 py-3 flex items-center gap-2 shadow-sm border border-gray-100">
-            <span className="text-gray-300">🔍</span>
+        <div className="mt-3 mb-4 md:mt-4 md:mb-5 max-w-xl md:max-w-2xl mx-auto">
+          <div className="bg-white rounded-full px-4 py-2.5 md:py-3 flex items-center gap-2 shadow-sm border border-gray-100">
+            <span className="text-gray-400 text-lg">🔍</span>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="ابحثي عن فساتين، مناسبات..."
-              className="bg-transparent flex-1 text-sm text-gray-600 outline-none placeholder:text-gray-300"
+              className="bg-transparent flex-1 text-sm text-gray-600 outline-none placeholder:text-gray-400"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="text-gray-300 hover:text-gray-500 text-sm"
+                className="text-gray-400 hover:text-gray-600 text-sm font-bold"
               >
                 ✕
               </button>
@@ -111,55 +111,55 @@ export default function HomePage() {
         ) : (
           <>
             {/* Hero Banner */}
-            <div className="relative bg-gradient-to-l from-pink-200 via-pink-100 to-amber-50 rounded-2xl md:rounded-3xl p-6 md:p-10 mb-6 overflow-hidden min-h-[160px] md:min-h-[220px]">
-              <div className="relative z-10 max-w-md">
-                <span className="inline-block bg-pink-400 text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full mb-2">
+            <div className="relative bg-gradient-to-l from-pink-200 via-pink-100 to-amber-50 rounded-2xl md:rounded-3xl p-5 md:p-10 mb-5 md:mb-6 overflow-hidden min-h-[180px] md:min-h-[220px]">
+              <div className="relative z-10 max-w-[60%] md:max-w-md">
+                <span className="inline-block bg-pink-500 text-white text-[11px] md:text-xs font-bold px-3 py-1 rounded-full mb-2 shadow-sm">
                   وصل حديثاً
                 </span>
-                <h2 className="text-2xl md:text-4xl font-extrabold text-gray-800 mb-1 leading-tight">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-gray-800 mb-2 leading-tight">
                   تشكيلة العيد
                   <br />
                   الصيفية
                 </h2>
-                <p className="text-xs md:text-sm text-gray-600 mb-3">
+                <p className="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 leading-relaxed">
                   أزياء أنيقة ومرحة لصغيراتك.
                 </p>
                 <Link
                   href="/categories"
-                  className="inline-block bg-white text-gray-700 text-xs md:text-sm font-semibold px-4 md:px-6 py-2 md:py-2.5 rounded-full shadow-sm hover:shadow-md transition-shadow"
+                  className="inline-block bg-white text-gray-700 text-xs md:text-sm font-semibold px-5 md:px-6 py-2 md:py-2.5 rounded-full shadow-md hover:shadow-lg transition-all"
                 >
                   تسوقي الآن
                 </Link>
               </div>
-              <div className="absolute left-4 md:left-12 bottom-0 text-7xl md:text-9xl opacity-20">
+              <div className="absolute left-2 md:left-12 bottom-0 text-8xl md:text-9xl opacity-30">
                 👧🏻
               </div>
             </div>
 
             {/* Categories */}
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-3">
+            <div className="mb-5 md:mb-6">
+              <div className="flex items-center justify-between mb-3 md:mb-4">
                 <h2 className="text-lg md:text-xl font-bold text-gray-800">
                   الأقسام
                 </h2>
                 <Link
                   href="/categories"
-                  className="text-xs md:text-sm text-pink-500 font-medium"
+                  className="text-xs md:text-sm text-pink-500 font-semibold hover:text-pink-600"
                 >
-                  عرض الكل
+                  عرض الكل ←
                 </Link>
               </div>
-              <div className="flex gap-4 md:gap-6 overflow-x-auto hide-scrollbar pb-2 md:justify-center md:flex-wrap">
+              <div className="flex gap-3 md:gap-6 overflow-x-auto hide-scrollbar pb-2 md:justify-center md:flex-wrap -mx-3 px-3 md:mx-0 md:px-0">
                 {categories.map((cat) => (
                   <Link
                     key={cat.id}
                     href={`/categories?cat=${cat.slug}`}
-                    className="flex flex-col items-center gap-1 flex-shrink-0"
+                    className="flex flex-col items-center gap-1.5 flex-shrink-0"
                   >
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-pink-50 rounded-full flex items-center justify-center text-2xl md:text-3xl border-2 border-pink-100 hover:border-pink-300 transition-colors">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-pink-50 to-pink-100 rounded-full flex items-center justify-center text-2xl md:text-3xl border-2 border-pink-200 hover:border-pink-400 hover:shadow-md transition-all">
                       {cat.icon}
                     </div>
-                    <span className="text-[10px] md:text-xs text-gray-600 font-medium text-center whitespace-nowrap">
+                    <span className="text-[11px] md:text-xs text-gray-700 font-medium text-center whitespace-nowrap">
                       {cat.name}
                     </span>
                   </Link>
@@ -168,8 +168,8 @@ export default function HomePage() {
             </div>
 
             {/* New Arrivals */}
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-3">
+            <div className="mb-5 md:mb-6">
+              <div className="flex items-center justify-between mb-3 md:mb-4">
                 <h2 className="text-lg md:text-xl font-bold text-gray-800">
                   وصل حديثاً
                 </h2>
@@ -200,16 +200,16 @@ export default function HomePage() {
             </div>
 
             {/* Ramadan Banner */}
-            <div className="bg-gradient-to-l from-green-100 to-green-50 rounded-2xl md:rounded-3xl p-6 md:p-10 mb-6">
-              <h3 className="text-lg md:text-2xl font-bold text-gray-800 mb-1">
+            <div className="bg-gradient-to-l from-green-100 to-green-50 rounded-2xl md:rounded-3xl p-5 md:p-10 mb-5 md:mb-6">
+              <h3 className="text-lg md:text-2xl font-bold text-gray-800 mb-1.5 md:mb-2">
                 جاهزة لرمضان؟
               </h3>
-              <p className="text-xs md:text-sm text-gray-600 mb-3">
+              <p className="text-xs md:text-sm text-gray-600 mb-3 md:mb-4">
                 أفضل الإطلالات التقليدية لطفلك.
               </p>
               <Link
                 href="/categories"
-                className="text-xs md:text-sm text-green-600 font-semibold"
+                className="text-xs md:text-sm text-green-600 font-bold hover:text-green-700"
               >
                 عرض التشكيلة ←
               </Link>
@@ -220,9 +220,8 @@ export default function HomePage() {
 
       {/* WhatsApp Floating Button */}
       <a
-        href={`https://wa.me/${
-          process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "967775376507"
-        }`}
+        href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "967775376507"
+          }`}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-20 md:bottom-6 left-4 md:left-8 z-50 w-12 h-12 md:w-14 md:h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors text-white text-xl md:text-2xl"

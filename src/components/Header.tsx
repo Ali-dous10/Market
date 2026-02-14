@@ -7,17 +7,17 @@ export default function Header() {
   const { totalItems } = useCart();
 
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-lg border-b border-gray-100">
-      <div className="max-w-lg md:max-w-5xl lg:max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-sm">
+      <div className="max-w-lg md:max-w-5xl lg:max-w-7xl mx-auto px-3 md:px-8 py-2.5 md:py-3 flex items-center justify-between gap-2">
         {/* Menu */}
-        <button className="text-gray-600 text-xl md:hidden">☰</button>
+        <button className="text-gray-600 text-2xl md:hidden p-1">☰</button>
 
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 md:w-10 md:h-10 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm md:text-base font-bold">
+        <div className="flex items-center gap-1.5 md:gap-2 flex-1 md:flex-initial justify-center md:justify-start">
+          <div className="w-7 h-7 md:w-10 md:h-10 bg-gradient-to-br from-pink-400 to-pink-500 rounded-full flex items-center justify-center text-white text-sm md:text-base font-bold shadow-md">
             ف
           </div>
-          <h1 className="text-lg md:text-xl font-bold text-gray-800">
+          <h1 className="text-base md:text-xl font-bold text-gray-800 whitespace-nowrap">
             فساتينا السعودية
           </h1>
         </div>
@@ -51,12 +51,12 @@ export default function Header() {
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-3 md:gap-4">
-          <button className="text-gray-500 text-lg">🔔</button>
-          <Link href="/cart" className="relative text-gray-500 text-lg">
+        <div className="flex items-center gap-2 md:gap-4">
+          <button className="text-gray-500 text-xl md:text-2xl p-1">🔔</button>
+          <Link href="/cart" className="relative text-gray-500 text-xl md:text-2xl p-1">
             🛒
             {totalItems > 0 && (
-              <span className="absolute -top-2 -left-2 bg-pink-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-[10px] font-bold min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1">
                 {totalItems}
               </span>
             )}
