@@ -1,0 +1,75 @@
+# 👗 متجر ملابس الأطفال (Kids Clothing Store)
+
+متجر إلكتروني حديث لملابس الأطفال مبني باستخدام **Next.js** و **Supabase** مع دعم كامل للغة العربية وتجربة مستخدم مميزة.
+
+## 🚀 تشغيل المشروع محلياً (Local Setup)
+
+لكي يعمل المشروع عندك، اتبع الخطوات التالية:
+
+### 1. تحميل المشروع
+
+```bash
+git clone https://github.com/Fadl711/mar711.git
+cd mar711
+```
+
+### 2. تثبيت المكتبات
+
+```bash
+npm install
+```
+
+### 3. إعداد البيئة (Environment Variables)
+
+قم بإنشاء ملف باسم `.env.local` في المجلد الرئيسي للمشروع، وأضف فيه القيم التالية (يمكنك الحصول عليها من صاحب المشروع أو من لوحة تحكم Supabase):
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_WHATSAPP_NUMBER=967... (رقم الواتساب بدون + أو أصفار في البداية)
+```
+
+### 4. تشغيل الموقع
+
+```bash
+npm run dev
+```
+
+افتح الرابط [http://localhost:3000](http://localhost:3000) في متصفحك.
+
+---
+
+## 🌐 الرفع على Netlify (Deployment)
+
+لرفع الموقع على Netlify وجعله متاحاً للجميع:
+
+1. **ربط الحساب:** قم بتسجيل الدخول في Netlify واربطه بحسابك في GitHub.
+2. **إضافة الموقع:** اختر **"Add new site"** ثم **"Import an existing project"**.
+3. **اختيار المستودع:** اختر مستودع `mar711`.
+4. **إعدادات البناء (Build Settings):** سيقوم Netlify بالتعرف على Next.js تلقائياً. تأكد أن الإعدادات كالتالي:
+   - **Build Command:** `npm run build`
+   - **Publish directory:** `.next`
+5. **إضافة المتغيرات (Environment Variables) - خطوة مهمة جداً:**
+   - اذهب إلى **Site configuration** > **Environment variables**.
+   - أضف نفس القيم الموجودة في ملف `.env.local`:
+     - `NEXT_PUBLIC_SUPABASE_URL`
+     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+     - `NEXT_PUBLIC_WHATSAPP_NUMBER`
+6. **النشر:** اضغط على **"Deploy site"**.
+
+---
+
+## 🛠 قاعدة البيانات (Supabase)
+
+إذا كنت تستخدم قاعدة بيانات جديدة، تأكد من تشغيل الأوامر التالية في **SQL Editor** داخل Supabase:
+
+```sql
+-- إضافة عمود الصور المتعددة للمنتجات
+ALTER TABLE products ADD COLUMN images text[] DEFAULT '{}';
+```
+
+---
+
+## 🔒 لوحة التحكم
+
+للدخول للوحة التحكم، اذهب إلى `/admin`. يجب أن يكون لديك حساب مسجل في Supabase Auth (قسم Authentication) لكي تتمكن من الدخول.
